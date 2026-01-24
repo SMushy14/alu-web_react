@@ -44,7 +44,7 @@ class App extends Component {
       this.props.logOut();
     }
   }
-  
+
   render() {
     const { isLoggedIn } = this.props;
     return (
@@ -57,7 +57,5 @@ class App extends Component {
     );
   }
 }
-
-
 
 export default App;
