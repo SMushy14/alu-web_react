@@ -75,10 +75,10 @@ class Notifications extends Component {
 						<button
 							className={css(styles.button)}
 							aria-label='Close'
-							onClick={() => {
-								console.log('Close button has been clicked');
-								handleHideDrawer();
-							}}
+							onClick={
+								// console.log('Close button has been clicked');
+								handleHideDrawer
+							}
 						>
 							<img
 								src={closeIcon}
