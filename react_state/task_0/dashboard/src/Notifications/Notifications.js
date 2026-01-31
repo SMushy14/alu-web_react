@@ -105,6 +105,8 @@ Notifications.propTypes = {
 
 Notifications.defaultProps = {
 	displayDrawer: false,
+	handleDisplayDrawer: () => {},
+	handleHideDrawer: () => {},
 };
 
 const opacityKeyframes = {
