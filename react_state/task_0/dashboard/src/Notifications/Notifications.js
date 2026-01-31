@@ -44,9 +44,7 @@ class Notifications extends Component {
 							? css(styles.none)
 							: css(styles.menuItem, styles.hover)
 					}
-					onClick={() => {
-						handleDisplayDrawer();
-					}}
+					onClick={handleDisplayDrawer}
 				>
 					Your notifications
 				</div>
