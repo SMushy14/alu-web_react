@@ -1,36 +1,36 @@
-import React, { Component } from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import React, { Component } from "react";
+import { StyleSheet, css } from "aphrodite";
 // import './Notifications.css';
-import closeIcon from './close-icon.png';
-import NotificationItem from './NotificationItem';
-import NotificationItemShape from './NotificationItemShape';
-import PropTypes from 'prop-types';
+import closeIcon from "./close-icon.png";
+import NotificationItem from "./NotificationItem";
+import NotificationItemShape from "./NotificationItemShape";
+import PropTypes from "prop-types";
 
 class Notifications extends Component {
-	constructor(props) {
-		super(props);
-		this.markAsRead = this.markAsRead.bind(this);
-	}
+  constructor(props) {
+    super(props);
+    this.markAsRead = this.markAsRead.bind(this);
+  }
 
-	shouldComponentUpdate(nextProps) {
-		return (
-			nextProps.length > this.props.listNotifications.length ||
-			nextProps.displayDrawer !== this.props.displayDrawer
-		);
-	}
+  shouldComponentUpdate(nextProps) {
+    return (
+      nextProps.length > this.props.listNotifications.length ||
+      nextProps.displayDrawer !== this.props.displayDrawer
+    );
+  }
 
-	markAsRead(id) {
-		console.log(`Notification ${id} has been marked as read`);
-	}
+  markAsRead(id) {
+    console.log(`Notification ${id} has been marked as read`);
+  }
 
-	render() {
-		const {
-			displayDrawer,
-			listNotifications,
-			handleDisplayDrawer,
-			handleHideDrawer,
-		} = this.props;
-		return (
+  render() {
+    const {
+      displayDrawer,
+      listNotifications,
+      handleDisplayDrawer,
+      handleHideDrawer,
+    } = this.props;
+    return (
       <div
         className={
           displayDrawer
@@ -44,7 +44,9 @@ class Notifications extends Component {
               ? css(styles.none)
               : css(styles.menuItem, styles.hover)
           }
-          onClick={handleDisplayDrawer}
+          onClick={() => {
+            handleDisplayDrawer();
+          }}
         >
           Your notifications
         </div>
@@ -75,10 +77,10 @@ class Notifications extends Component {
             <button
               className={css(styles.button)}
               aria-label="Close"
-              onClick={
-                this.props.handleHideDrawer
-                // console.log('Close button has been clicked');
-              }
+              onClick={() => {
+                console.log("Close button has been clicked");
+                handleHideDrawer();
+              }}
             >
               <img
                 src={closeIcon}
@@ -91,102 +93,100 @@ class Notifications extends Component {
         ) : null}
       </div>
     );
-	}
+  }
 }
 
 Notifications.propTypes = {
-	displayDrawer: PropTypes.bool,
-	listNotifications: PropTypes.arrayOf(NotificationItemShape),
-	handleDisplayDrawer: PropTypes.func,
-	handleHideDrawer: PropTypes.func,
+  displayDrawer: PropTypes.bool,
+  listNotifications: PropTypes.arrayOf(NotificationItemShape),
+  handleDisplayDrawer: PropTypes.func,
+  handleHideDrawer: PropTypes.func,
 };
 
 Notifications.defaultProps = {
-	displayDrawer: false,
-	handleDisplayDrawer: () => {},
-	handleHideDrawer: () => {},
+  displayDrawer: false,
 };
 
 const opacityKeyframes = {
-	from: {
-		opacity: 0.5,
-	},
-	to: {
-		opacity: 1,
-	},
+  from: {
+    opacity: 0.5,
+  },
+  to: {
+    opacity: 1,
+  },
 };
 
 const bounceKeyframes = {
-	'0%': {
-		transform: 'translateY(0)',
-	},
-	'25%': {
-		transform: 'translateY(-5px)',
-	},
-	'75%': {
-		transform: 'translateY(5px)',
-	},
-	'100%': {
-		transform: 'translateY(0)',
-	},
+  "0%": {
+    transform: "translateY(0)",
+  },
+  "25%": {
+    transform: "translateY(-5px)",
+  },
+  "75%": {
+    transform: "translateY(5px)",
+  },
+  "100%": {
+    transform: "translateY(0)",
+  },
 };
 
 const styles = StyleSheet.create({
-	notificationsContainer: {
-		display: 'flex',
-		flexDirection: 'column',
-		marginTop: '1rem',
-		marginRight: '1rem',
-		gridRow: '1',
-	},
-	menuItem: {
-		textAlign: 'right',
-		marginRight: '.5rem',
-	},
-	hover: {
-		':hover': {
-			cursor: 'pointer',
-			animationName: [bounceKeyframes, opacityKeyframes],
-			animationDuration: '0.5s, 1s',
-			animationIterationCount: '3',
-		},
-	},
-	Notifications: {
-		border: 'dashed red',
-		padding: '2rem',
-		marginTop: '.3rem',
-	},
-	noBorder: {
-		'@media (max-width: 900px)': {
-			border: 'none',
-		},
-	},
-	none: {
-		display: 'none',
-		'@media (max-width: 900px)': {
-			display: 'none',
-		},
-	},
-	button: {
-		position: 'absolute',
-		top: '3.5rem',
-		right: '2.2rem',
-		'@media (max-width: 900px)': {
-			top: '10.5rem',
-			right: '14.2rem',
-		},
-	},
-	center: {
-		'@media (max-width: 900px)': {
-			marginLeft: '4vw',
-			fontSize: '20px',
-		},
-	},
-	drawerOpen: {
-		'@media (max-width: 900px)': {
-			gridRow: '2',
-		},
-	},
+  notificationsContainer: {
+    display: "flex",
+    flexDirection: "column",
+    marginTop: "1rem",
+    marginRight: "1rem",
+    gridRow: "1",
+  },
+  menuItem: {
+    textAlign: "right",
+    marginRight: ".5rem",
+  },
+  hover: {
+    ":hover": {
+      cursor: "pointer",
+      animationName: [bounceKeyframes, opacityKeyframes],
+      animationDuration: "0.5s, 1s",
+      animationIterationCount: "3",
+    },
+  },
+  Notifications: {
+    border: "dashed red",
+    padding: "2rem",
+    marginTop: ".3rem",
+  },
+  noBorder: {
+    "@media (max-width: 900px)": {
+      border: "none",
+    },
+  },
+  none: {
+    display: "none",
+    "@media (max-width: 900px)": {
+      display: "none",
+    },
+  },
+  button: {
+    position: "absolute",
+    top: "3.5rem",
+    right: "2.2rem",
+    "@media (max-width: 900px)": {
+      top: "10.5rem",
+      right: "14.2rem",
+    },
+  },
+  center: {
+    "@media (max-width: 900px)": {
+      marginLeft: "4vw",
+      fontSize: "20px",
+    },
+  },
+  drawerOpen: {
+    "@media (max-width: 900px)": {
+      gridRow: "2",
+    },
+  },
 });
 
 export default Notifications;
