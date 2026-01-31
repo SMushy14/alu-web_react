@@ -59,13 +59,14 @@ class App extends React.Component {
 	}
 
 	render() {
+		const { displayDrawer } = this.state;
 		return (
 			<>
 				<div className={css(styles.container, styles.small)}>
 					<Header />
 					<Notifications
 						listNotifications={this.listNotifications}
-						displayDrawer={this.state.displayDrawer}
+						displayDrawer={displayDrawer}
 						handleDisplayDrawer={this.handleDisplayDrawer}
 						handleHideDrawer={this.handleHideDrawer}
 					/>
