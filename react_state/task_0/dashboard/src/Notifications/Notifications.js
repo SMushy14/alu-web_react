@@ -31,66 +31,66 @@ class Notifications extends Component {
 			handleHideDrawer,
 		} = this.props;
 		return (
-			<div
-				className={
-					displayDrawer
-						? css(styles.notificationsContainer, styles.drawerOpen)
-						: css(styles.notificationsContainer)
-				}
-			>
-				<div
-					className={
-						displayDrawer
-							? css(styles.none)
-							: css(styles.menuItem, styles.hover)
-					}
-					onClick={handleDisplayDrawer}
-				>
-					Your notifications
-				</div>
-				{displayDrawer ? (
-					<div className={css(styles.Notifications, styles.noBorder)}>
-						<p className={css(styles.center)}>
-							Here is the list of notifications
-						</p>
-						<ul>
-							{listNotifications && listNotifications.length > 0 ? (
-								listNotifications.map(({ type, value, html, id }) => (
-									<NotificationItem
-										key={id}
-										type={type}
-										value={value}
-										html={html}
-										markAsRead={this.markAsRead}
-										id={id}
-										styles={
-											html || type === 'urgent' ? styles.urgent : styles.default
-										}
-									/>
-								))
-							) : (
-								<NotificationItem value='No new notification for now' />
-							)}
-						</ul>
-						<button
-							className={css(styles.button)}
-							aria-label='Close'
-							onClick={
-								// console.log('Close button has been clicked');
-								handleHideDrawer
-							}
-						>
-							<img
-								src={closeIcon}
-								alt='close icon'
-								width='10px'
-								height='10px'
-							/>
-						</button>
-					</div>
-				) : null}
-			</div>
-		);
+      <div
+        className={
+          displayDrawer
+            ? css(styles.notificationsContainer, styles.drawerOpen)
+            : css(styles.notificationsContainer)
+        }
+      >
+        <div
+          className={
+            displayDrawer
+              ? css(styles.none)
+              : css(styles.menuItem, styles.hover)
+          }
+          onClick={handleDisplayDrawer}
+        >
+          Your notifications
+        </div>
+        {displayDrawer ? (
+          <div className={css(styles.Notifications, styles.noBorder)}>
+            <p className={css(styles.center)}>
+              Here is the list of notifications
+            </p>
+            <ul>
+              {listNotifications && listNotifications.length > 0 ? (
+                listNotifications.map(({ type, value, html, id }) => (
+                  <NotificationItem
+                    key={id}
+                    type={type}
+                    value={value}
+                    html={html}
+                    markAsRead={this.markAsRead}
+                    id={id}
+                    styles={
+                      html || type === "urgent" ? styles.urgent : styles.default
+                    }
+                  />
+                ))
+              ) : (
+                <NotificationItem value="No new notification for now" />
+              )}
+            </ul>
+            <button
+              className={css(styles.button)}
+              aria-label="Close"
+              onClick={
+                this.props.handleHideDrawer
+                // console.log('Close button has been clicked');
+              }
+            >
+              <img
+                src={closeIcon}
+                alt="close icon"
+                width="10px"
+                height="10px"
+              />
+            </button>
+          </div>
+        ) : null}
+      </div>
+    );
 	}
 }
 
