@@ -44,9 +44,7 @@ class Notifications extends Component {
               ? css(styles.none)
               : css(styles.menuItem, styles.hover)
           }
-          onClick={() => {
-            handleDisplayDrawer();
-          }}
+          onClick={handleDisplayDrawer}
         >
           Your notifications
         </div>
@@ -77,10 +75,7 @@ class Notifications extends Component {
             <button
               className={css(styles.button)}
               aria-label="Close"
-              onClick={() => {
-                console.log("Close button has been clicked");
-                handleHideDrawer();
-              }}
+              onClick={handleHideDrawer}
             >
               <img
                 src={closeIcon}
